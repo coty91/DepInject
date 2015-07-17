@@ -23,3 +23,24 @@
 	window.DI = new DepInject();
 
 })(window);
+
+var SayWhat = {
+	say: function() {
+		console.log("What");
+	}
+}
+
+var SayHello = {
+	say: function() {
+		console.log("Hello");
+	}
+}
+
+function HomeController(Speech) {
+	Speech.say();
+}
+
+DI.register('Speech', ((Math.random()*10) <= 5) ? SayWhat : SayHello);
+
+DI.process(HomeController);
+
